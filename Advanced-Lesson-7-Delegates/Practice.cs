@@ -14,8 +14,43 @@ namespace Advanced_Lesson_7_Delegates
         /// </summary>
         public static void L7P1_Calculator()
         {
-            
+            int value1 = 100;
+            int value2 = 200;
+            Func<int,int,double> operation = null;
+
+            switch (Console.ReadKey().KeyChar)
+            {
+                case '+':
+                    {
+                        operation = delegate (int var1, int var2) //АНОНИМНАЯ ФУНКЦИЯ
+                        {
+                            return var1 + var2;
+                        };
+                        break;
+                    }
+                case '-':
+                    {
+                        operation = (int var1, int var2) => var1 - var2; //ЛЯМБДА-ВЫРАЖЕНИЕ
+                        break;
+                    }
+                
+            }
+            double result = operation(value1, value2);
+            Console.WriteLine(result);
+
         }
+
+        //delegate double OperationDel(int var1, int var2);
+
+        //static double Summ(int var1, int var2)
+        //{
+        //    return var1 + var2;
+        //}
+
+        //static double Substruction(int var1, int var2)
+        //{
+        //    return var1 - var2;
+        //}
 
         /// <summary>
         /// L7.P2. Создать расширяющий метод для коллекции строк.
